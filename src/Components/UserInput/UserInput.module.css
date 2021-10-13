@@ -6,20 +6,16 @@
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   margin: auto;
-  opacity: 0;
-  pointer-events: none;
+  margin-top: 2rem;
+
   background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(1px);
   transition: all 0.3s;
 }
 
-.form.visible {
-  opacity: 1;
-  pointer-events: all;
-}
-
 .form input {
   height: 4rem;
+  cursor: pointer;
   width: 8rem;
   font-size: 2rem;
   width: 100%;

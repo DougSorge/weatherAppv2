@@ -25,12 +25,8 @@ export default function TimeDate() {
 
   return (
     <>
-      <div className={styles.time}>
-        <p>{date.date}</p>
-      </div>
-      <div className={styles.date}>
-        <p>{date.time}</p>
-      </div>
+      <p className={styles.time}>{date.date}</p>
+      <p className={styles.date}>{date.time}</p>
     </>
   );
 }

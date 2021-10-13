@@ -1,10 +1,11 @@
 import React from "react";
 import Background from "./Components/UI/Background";
 
-import "./App.css";
 import NavBar from "./Components/NavBar/NavBar";
 import TimeDateContainer from "./Components/TimeDateDisplay/TimeDateContainer";
 import TimeDate from "./Components/TimeDateDisplay/TimeDate";
+import "./App.css";
+import SearchFunctionality from "./Components/UI/SearchFunctionality/SearchFunctionality";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <TimeDateContainer>
         <TimeDate />
       </TimeDateContainer>
+      <SearchFunctionality />
     </>
   );
 }
