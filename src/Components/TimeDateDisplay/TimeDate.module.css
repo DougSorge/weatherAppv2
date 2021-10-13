@@ -1,0 +1,12 @@
+.time {
+  margin-block: 1.3rem;
+  font-size: 4rem;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.date {
+  font-size: 3rem;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
