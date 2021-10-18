@@ -16,7 +16,7 @@ export default function Background(props) {
     <div
       className={style.appContainer}
       style={{
-        backgroundImage: `linear-gradient(rgba(0,0,0, .1) 60%, rgba(0,0,0, .6) ), ${getBackground()}`,
+        backgroundImage: `linear-gradient(rgba(0,0,0, .3) , rgba(0,0,0, .6) ), ${getBackground()}`,
       }}
     >
       {props.children}

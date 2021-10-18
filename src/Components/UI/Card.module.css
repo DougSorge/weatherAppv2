@@ -24,3 +24,16 @@
 .card .max-temp {
   font-size: 2rem;
 }
+
+.card .description {
+  color: white;
+  margin-top: -10px;
+  margin-bottom: 5px;
+  font-size: 2rem;
+}
+
+@media only screen and (max-width: 675px) {
+  .card.forecastCard {
+    width: 100%;
+  }
+}

@@ -17,3 +17,23 @@
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.8);
   margin-bottom: 1rem;
 }
+
+.button {
+  background: rgba(255, 255, 255, 0.3);
+  margin-left: 2rem;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.creditPara {
+  color: white;
+  text-align: center;
+}
+
+@media only screen and (max-width: 450px) {
+  .button {
+    padding: 1rem 2rem;
+  }
+}

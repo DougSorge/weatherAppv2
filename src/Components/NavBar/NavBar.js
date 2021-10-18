@@ -7,10 +7,10 @@ export default function NavBar(props) {
     <>
       <nav className={styles.navbar}>
         <span>SorgeForge Weather</span>
-        <div>
+        {/* <div>
           <button type="button">Sign In</button>
           <button type="button">Sign Up</button>
-        </div>
+        </div> */}
       </nav>
     </>
   );

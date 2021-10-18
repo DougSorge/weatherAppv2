@@ -11,10 +11,11 @@ export default function UserInput(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     props.performSearch(searchTerm);
+    setSearchTerm("");
   };
 
   return (
-    <form className={`${style.form} `} onSubmit={handleSubmit}>
+    <form id="form" className={`${style.form} `} onSubmit={handleSubmit}>
       <input
         type="text"
         name="getData"

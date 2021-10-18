@@ -3,7 +3,7 @@ import style from "./Card.module.css";
 
 export default function ForecastCard(props) {
   return (
-    <div className={style.card}>
+    <div className={`${style.card} ${style.forecastCard}`}>
       <img
         src={`http://openweathermap.org/img/wn/${props.day.weather[0].icon}@2x.png`}
         alt="weather Icon"

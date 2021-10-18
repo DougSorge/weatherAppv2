@@ -33,26 +33,61 @@ export default function SearchFunctionality(props) {
     );
   }, [myAPIKey]);
 
+  useEffect(() => {
+    if (searchResults && !geoResults) {
+      addButtonToForm();
+    }
+  }, [searchResults, geoResults]);
+
+  useEffect(() => {
+    if (document.getElementById(`form`).children[1] && geoResults) {
+      document.getElementById(`form`).children[1].remove();
+    }
+  }, [searchResults, geoResults]);
+
+  function getLocationForecastAgain() {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        fetch(
+          `https://api.openweathermap.org/data/2.5/onecall?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=imperial&appid=${myAPIKey}`
+        )
+          .then((response) => response.json())
+          .then((data) => setGeoResults(data));
+      },
+      () => {
+        console.log(`Location Couldn't be accuired`);
+      },
+      {
+        timeout: 12000,
+        maximumAge: 60000,
+        enableHighAccuracy: true,
+      }
+    );
+    setSearchResults();
+  }
+
+  // createbutton to switch back to results
+  function addButtonToForm() {
+    let button = document.createElement("button");
+    button.type = "button";
+    button.classList.add(`${style.button}`);
+    button.innerText = `Location Forecast`;
+    button.addEventListener("click", getLocationForecastAgain);
+    document.getElementById("form").appendChild(button);
+  }
+
   // used to pull search term from userInput component and perform API call.
   const performSearchByCityName = (query) => {
     fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${query}&units=imperial&appid=${myAPIKey}`
     )
       .then((response) => response.json())
+
       .then((data) => setSearchResults(data));
+    setGeoResults();
   };
 
-  if (searchResults) {
-    return (
-      <>
-        <UserInput performSearch={performSearchByCityName} />
-        <h1 className={style.header}>Current Weather for desired location</h1>
-        <div className={style.resultsContainer}>
-          <Card searchResults={searchResults} />
-        </div>
-      </>
-    );
-  } else if (!searchResults && geoResults) {
+  if (geoResults && !searchResults) {
     return (
       <>
         <UserInput performSearch={performSearchByCityName} />
@@ -62,6 +97,24 @@ export default function SearchFunctionality(props) {
             <ForecastCard key={index * Math.random()} day={day} />
           ))}
         </div>
+        <p className={style.creditPara}>
+          Data Provided By <strong>OpenWeather (TM)</strong>
+        </p>
+      </>
+    );
+  } else if (searchResults && !geoResults) {
+    return (
+      <>
+        <UserInput performSearch={performSearchByCityName} />
+        <h1 className={style.header}>
+          Current Weather for {searchResults.name}
+        </h1>
+        <div className={style.resultsContainer}>
+          <Card searchResults={searchResults} />
+        </div>
+        <p className={style.creditPara}>
+          Data Provided By <strong>OpenWeather (TM)</strong>
+        </p>
       </>
     );
   } else {
