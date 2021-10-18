@@ -1,0 +1,10 @@
+.resultsContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.resultsContainer.forecastContainer {
+  margin: auto;
+  max-width: 99%;
+  overflow-x: scroll;
+}

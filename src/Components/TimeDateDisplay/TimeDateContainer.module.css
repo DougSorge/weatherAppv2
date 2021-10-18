@@ -1,7 +1,7 @@
 .timeDateContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
+
   background: linear-gradient(
       to top,
       rgba(255, 255, 255, 0.5) 5%,
@@ -15,8 +15,8 @@
   backdrop-filter: blur(10px);
   border-radius: 3px;
   height: auto;
-  width: 40rem;
-  margin: 2rem auto;
+  width: 30rem;
+  margin: 2rem;
   padding: 2rem;
 }
 
@@ -24,5 +24,10 @@
   .timeDateContainer {
     margin-inline: auto;
     text-align: center;
+    flex-direction: row;
+    width: 100%;
+    margin: 0;
+    align-items: center;
+    justify-content: space-between;
   }
 }

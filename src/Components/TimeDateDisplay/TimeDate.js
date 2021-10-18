@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+
 import styles from "./TimeDate.module.css";
 
-let currentDate = new Date();
-
 export default function TimeDate() {
+  let currentDate = new Date();
+
   const [date, setDate] = useState({
     time: currentDate.toLocaleTimeString("en-US", {
       hour: "2-digit",
@@ -12,16 +13,16 @@ export default function TimeDate() {
     date: currentDate.toDateString().slice(3),
   });
 
-  setInterval(() => {
-    currentDate = new Date();
-    setDate({
-      time: currentDate.toLocaleTimeString("en-US", {
-        hour: "2-digit",
-        minute: "2-digit",
-      }),
-      date: currentDate.toDateString().slice(3),
-    });
-  }, 45000);
+  // setInterval(() => {
+  //   currentDate = new Date();
+  //   setDate({
+  //     time: currentDate.toLocaleTimeString("en-US", {
+  //       hour: "2-digit",
+  //       minute: "2-digit",
+  //     }),
+  //     date: currentDate.toDateString().slice(3),
+  //   });
+  // }, 60000);
 
   return (
     <>
