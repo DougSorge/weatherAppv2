@@ -46,6 +46,7 @@ export default function SearchFunctionality(props) {
     return (
       <>
         <UserInput performSearch={performSearchByCityName} />
+        <h1 className={style.header}>Current Weather for desired location</h1>
         <div className={style.resultsContainer}>
           <Card searchResults={searchResults} />
         </div>
@@ -55,6 +56,7 @@ export default function SearchFunctionality(props) {
     return (
       <>
         <UserInput performSearch={performSearchByCityName} />
+        <h1 className={style.header}>Forecast for your current location</h1>
         <div className={`${style.resultsContainer} ${style.forecastContainer}`}>
           {geoResults.daily.map((day, index) => (
             <ForecastCard key={index * Math.random()} day={day} />

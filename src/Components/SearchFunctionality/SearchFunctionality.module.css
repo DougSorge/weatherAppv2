@@ -8,3 +8,12 @@
   margin: auto;
   max-width: 99%;
 }
+
+.header {
+  color: white;
+  font-size: 2.5rem;
+  padding-inline: 1rem;
+  text-align: center;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.8);
+  margin-bottom: 1rem;
+}
