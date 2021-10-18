@@ -1,14 +1,17 @@
 html,
-body {
-  margin: 0;
+body,
+#root,
+#root > div {
   height: 100%;
-  padding: 0;
+}
+
+html {
   font-size: 62.5%;
+  overflow: auto;
 }
 
 body {
   box-sizing: border-box;
-  position: relative;
 }
 
 *,
@@ -19,15 +22,11 @@ body {
   padding: 0;
 }
 
-#root {
-  height: 100%;
-}
-
-#container-root {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: -100;
+@media only screen and (max-width: 850px) {
+  html,
+  body,
+  #root,
+  #root > div {
+    height: auto;
+  }
 }
