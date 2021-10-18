@@ -13,16 +13,16 @@ export default function TimeDate() {
     date: currentDate.toDateString().slice(3),
   });
 
-  // setInterval(() => {
-  //   currentDate = new Date();
-  //   setDate({
-  //     time: currentDate.toLocaleTimeString("en-US", {
-  //       hour: "2-digit",
-  //       minute: "2-digit",
-  //     }),
-  //     date: currentDate.toDateString().slice(3),
-  //   });
-  // }, 60000);
+  setInterval(() => {
+    currentDate = new Date();
+    setDate({
+      time: currentDate.toLocaleTimeString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+      date: currentDate.toDateString().slice(3),
+    });
+  }, 60000);
 
   return (
     <>
