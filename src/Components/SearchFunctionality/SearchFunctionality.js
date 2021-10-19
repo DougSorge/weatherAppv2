@@ -41,7 +41,7 @@ export default function SearchFunctionality(props) {
           `https://api.openweathermap.org/data/2.5/onecall?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=imperial&appid=${myAPIKey}`
         )
           .then((response) => response.json())
-          .then((data) => console.log(data))
+          // .then((data) => console.log(data))
           .then((data) => setGeoResults(data));
       },
       () => {
