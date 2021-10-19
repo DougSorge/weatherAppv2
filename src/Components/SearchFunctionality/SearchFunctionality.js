@@ -77,7 +77,6 @@ export default function SearchFunctionality(props) {
       `http://api.openweathermap.org/data/2.5/weather?q=${query}&units=imperial&appid=${myAPIKey}`
     )
       .then((response) => response.json())
-
       .then((data) => setSearchResults(data));
     setGeoResults();
   };
