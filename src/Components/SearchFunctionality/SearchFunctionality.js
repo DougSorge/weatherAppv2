@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Card from "../UI/Card";
 import UserInput from "./UserInput/UserInput";
 import style from "./SearchFunctionality.module.css";
@@ -33,19 +33,7 @@ export default function SearchFunctionality(props) {
     );
   }, [myAPIKey]);
 
-  useEffect(() => {
-    if (searchResults && !geoResults) {
-      addButtonToForm();
-    }
-  }, [searchResults, geoResults]);
-
-  useEffect(() => {
-    if (document.getElementById(`form`).children[1] && geoResults) {
-      document.getElementById(`form`).children[1].remove();
-    }
-  }, [searchResults, geoResults]);
-
-  function getLocationForecastAgain() {
+  const getLocationForecastAgain = useCallback(() => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         fetch(
@@ -64,17 +52,24 @@ export default function SearchFunctionality(props) {
       }
     );
     setSearchResults();
-  }
+  }, [myAPIKey]);
 
-  // createbutton to switch back to results
-  function addButtonToForm() {
-    let button = document.createElement("button");
-    button.type = "button";
-    button.classList.add(`${style.button}`);
-    button.innerText = `Location Forecast`;
-    button.addEventListener("click", getLocationForecastAgain);
-    document.getElementById("form").appendChild(button);
-  }
+  useEffect(() => {
+    if (searchResults && !geoResults) {
+      let button = document.createElement("button");
+      button.type = "button";
+      button.classList.add(`${style.button}`);
+      button.innerText = `Location Forecast`;
+      button.addEventListener("click", getLocationForecastAgain);
+      document.getElementById("form").appendChild(button);
+    }
+  }, [searchResults, geoResults, getLocationForecastAgain]);
+
+  useEffect(() => {
+    if (document.getElementById(`form`).children[1] && geoResults) {
+      document.getElementById(`form`).children[1].remove();
+    }
+  }, [searchResults, geoResults]);
 
   // used to pull search term from userInput component and perform API call.
   const performSearchByCityName = (query) => {
