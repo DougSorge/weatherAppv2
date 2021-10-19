@@ -74,7 +74,7 @@ export default function SearchFunctionality(props) {
   // used to pull search term from userInput component and perform API call.
   const performSearchByCityName = (query) => {
     fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${query}&units=imperial&appid=${myAPIKey}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${query}&units=imperial&appid=${myAPIKey}`
     )
       .then((response) => response.json())
       .then((data) => setSearchResults(data));
