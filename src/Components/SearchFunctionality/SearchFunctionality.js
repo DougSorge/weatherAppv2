@@ -20,6 +20,7 @@ export default function SearchFunctionality(props) {
           `https://api.openweathermap.org/data/2.5/onecall?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=imperial&appid=${myAPIKey}`
         )
           .then((response) => response.json())
+          // .then((data) => console.log(data))
           .then((data) => setGeoResults(data));
       },
       () => {
@@ -40,6 +41,7 @@ export default function SearchFunctionality(props) {
           `https://api.openweathermap.org/data/2.5/onecall?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=imperial&appid=${myAPIKey}`
         )
           .then((response) => response.json())
+          .then((data) => console.log(data))
           .then((data) => setGeoResults(data));
       },
       () => {
@@ -55,7 +57,11 @@ export default function SearchFunctionality(props) {
   }, [myAPIKey]);
 
   useEffect(() => {
-    if (searchResults && !geoResults) {
+    if (
+      searchResults &&
+      !geoResults &&
+      !document.getElementById(`form`).children[1]
+    ) {
       let button = document.createElement("button");
       button.type = "button";
       button.classList.add(`${style.button}`);

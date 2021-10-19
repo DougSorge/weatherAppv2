@@ -8,6 +8,7 @@ export default function ForecastCard(props) {
         src={`http://openweathermap.org/img/wn/${props.day.weather[0].icon}@2x.png`}
         alt="weather Icon"
       />
+      <p className={style["description"]}>{props.day.weather[0].description}</p>
       <p className={style["current-temp"]}>{props.day.temp.day}</p>
       <div>
         <p className={style["max-temp"]}>High: {props.day.temp.max}</p>
