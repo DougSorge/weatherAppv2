@@ -83,11 +83,13 @@ export default function SearchFunctionality(props) {
       `https://api.openweathermap.org/data/2.5/weather?q=${query}&units=imperial&appid=${myAPIKey}`
     )
       .then((response) => response.json())
+      // .then((data) => console.log(data))
       .then((data) => setSearchResults(data));
     setGeoResults();
   };
 
   if (geoResults && !searchResults) {
+    props.getWeatherCode(geoResults.current.weather[0].id);
     return (
       <>
         <UserInput performSearch={performSearchByCityName} />
@@ -103,6 +105,9 @@ export default function SearchFunctionality(props) {
       </>
     );
   } else if (searchResults && !geoResults) {
+    if (searchResults.weather) {
+      props.getWeatherCode(searchResults.weather[0].id);
+    }
     return (
       <>
         <UserInput performSearch={performSearchByCityName} />

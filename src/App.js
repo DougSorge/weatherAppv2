@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Background from "./Components/UI/Background";
 
 import NavBar from "./Components/NavBar/NavBar";
@@ -8,13 +8,19 @@ import "./App.css";
 import SearchFunctionality from "./Components/SearchFunctionality/SearchFunctionality";
 
 function App() {
+  const [currentWeatherCode, setCurrentWeatherCode] = useState();
+
+  function getWeatherCode(weatherCode) {
+    setCurrentWeatherCode(weatherCode);
+  }
+
   return (
-    <Background>
+    <Background currentWeatherCode={currentWeatherCode}>
       <NavBar />
       <TimeDateContainer>
         <TimeDate />
       </TimeDateContainer>
-      <SearchFunctionality />
+      <SearchFunctionality getWeatherCode={getWeatherCode} />
     </Background>
   );
 }
