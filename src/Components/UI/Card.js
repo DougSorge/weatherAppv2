@@ -1,10 +1,17 @@
+// Very Important!! I realize that this is NOT how a reusable card component should function. The data should be rendered between opening and closing Card tags in the component where it is generated. In this case that would be the searchfunctionality component.
+// I will need to rework a fair amount of logic to make this properly reusable. In due time.
+
 import React from "react";
 import style from "./Card.module.css";
 
 const Card = (props) => {
   if (props.searchResults.cod === 200) {
+    // let date = new Date(props.searchResults.dt * 1000).toLocaleDateString();
     return (
       <div className={`${style.card} `}>
+        <p className={style["date"]}>
+          {new Date(props.searchResults.dt * 1000).toLocaleDateString()}
+        </p>
         <img
           src={`http://openweathermap.org/img/wn/${props.searchResults.weather[0].icon}@2x.png`}
           alt="weather Icon"
@@ -22,6 +29,7 @@ const Card = (props) => {
         <p className={style["min-temp"]}>
           Low: {props.searchResults.main.temp_min}
         </p>
+        {/* {props.children} */}
       </div>
     );
   } else {

@@ -12,7 +12,6 @@ export default function SearchFunctionality(props) {
   const [geoResults, setGeoResults] = useState();
 
   //used to automatically pull weather data based on device location.
-
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -56,6 +55,9 @@ export default function SearchFunctionality(props) {
     setSearchResults();
   }, [myAPIKey]);
 
+  // This runs in order to create the button that lets you switch back to location forecast after performing a search. It checks if the searchResults state is populated and that the geoResults state is not populated AND that the form does not already have this button created. If those conditions are met the button is generated / appended to the form. An event listener is attached to the button to run the function that calls the geolocation and api search once again.
+  // The else if block checks to see if the button exists AND that geoResults have been generated. If these conditions are met the button is removed from the DOM.
+  // This was structured this way because the button was being generated over and over each time I would perform a search or switch back to location forecast mode. This fixed it. High Five!
   useEffect(() => {
     if (
       searchResults &&
@@ -68,14 +70,10 @@ export default function SearchFunctionality(props) {
       button.innerText = `Location Forecast`;
       button.addEventListener("click", getLocationForecastAgain);
       document.getElementById("form").appendChild(button);
-    }
-  }, [searchResults, geoResults, getLocationForecastAgain]);
-
-  useEffect(() => {
-    if (document.getElementById(`form`).children[1] && geoResults) {
+    } else if (document.getElementById(`form`).children[1] && geoResults) {
       document.getElementById(`form`).children[1].remove();
     }
-  }, [searchResults, geoResults]);
+  }, [searchResults, geoResults, getLocationForecastAgain]);
 
   // used to pull search term from userInput component and perform API call.
   const performSearchByCityName = (query) => {
@@ -116,6 +114,25 @@ export default function SearchFunctionality(props) {
         </h1>
         <div className={style.resultsContainer}>
           <Card searchResults={searchResults} />
+          {/* <Card>
+            <img
+              src={`http://openweathermap.org/img/wn/${searchResults.weather[0].icon}@2x.png`}
+              alt="weather Icon"
+            />
+            <p className={style["description"]}>
+              {searchResults.weather[0].description}
+            </p>
+            <p className={style["current-temp"]}>
+              {searchResults.main.feels_like}
+            </p>
+
+            <p className={style["max-temp"]}>
+              High: {searchResults.main.temp_max}
+            </p>
+            <p className={style["min-temp"]}>
+              Low: {searchResults.main.temp_min}
+            </p>
+          </Card> */}
         </div>
         <p className={style.creditPara}>
           Data Provided By <strong>OpenWeather (TM)</strong>
