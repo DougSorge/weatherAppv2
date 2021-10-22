@@ -48,9 +48,9 @@ const ModalContent = (props) => {
 
         <li>{`Humidity: ${props.day.humidity}%`}</li>
         <li>{`Sunrise: ${timeCreator(props.day.sunrise)}`}</li>
-        <li>{`Sunset: ${timeCreator(props.day.sunrise)}`}</li>
+        <li>{`Sunset: ${timeCreator(props.day.sunset)}`}</li>
         <li>{`Moonrise: ${timeCreator(props.day.moonrise)}`}</li>
-        <li>{`Moonset: ${timeCreator(props.day.moonrise)}`}</li>
+        <li>{`Moonset: ${timeCreator(props.day.moonset)}`}</li>
         <li>{`UV-Index: ${props.day.uvi}`}</li>
         <li>{`Wind Speed: ${props.day.wind_speed} mph`}</li>
         <li>{`Wind Direction: ${
